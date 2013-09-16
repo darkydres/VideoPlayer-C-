@@ -1,0 +1,104 @@
+﻿<Window x:Class="ReproductorVideo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="523" Width="921" Closing="CerrarYguardar" MouseLeftButtonDown="Window_MouseLeftButtonDown_1">
+    <Grid Margin="0,0,-8,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="837*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <MediaElement x:Name="MediaV" HorizontalAlignment="Left" Height="396" Margin="10,10,0,0" VerticalAlignment="Top" Width="427" LoadedBehavior="Manual" Stretch="Fill" MediaEnded="MediaV_MediaEnded"/>
+        <Button x:Name="BtnAdelante" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="345,427,0,0" VerticalAlignment="Top" Width="32" Height="31" Click="BtnAdelante_Click"/>
+        <Button x:Name="BtnAtras" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="118,427,0,0" VerticalAlignment="Top" Width="32" Height="31" Click="BtnAtras_Click"/>
+        <Button x:Name="BtnPlay" Content="Play" HorizontalAlignment="Left" Margin="170,420,0,0" VerticalAlignment="Top" Width="49" Height="45" Click="BtnPlay_Click"/>
+        <Button x:Name="BtnStop" Content="Stop" HorizontalAlignment="Left" Margin="243,427,0,0" VerticalAlignment="Top" Width="73" Height="31" Click="BtnStop_Click"/>
+
+        <ListBox x:Name="LstVideos" HorizontalAlignment="Left" Height="391" Margin="563,31,0,0" VerticalAlignment="Top" Width="140" MouseDown="LstVideos_MouseDown" SelectionChanged="LstVideos_SelectionChanged">
+            <ListBox.Resources>
+
+                <!--Defines a context menu-->
+                <ContextMenu x:Key="MyElementMenu">
+                    <MenuItem Header="Delete" Click="MenuItemDeleteLstVideos_Click"/>
+                </ContextMenu>
+
+                <!--Sets a context menu for each ListBoxItem in the current ListBox-->
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource MyElementMenu}"/>
+                </Style>
+
+            </ListBox.Resources>
+            </ListBox>
+        
+        <ComboBox x:Name="CboxNombresListasReproduccion" HorizontalAlignment="Left" Margin="442,243,0,0" VerticalAlignment="Top" Width="109" SelectionChanged="CboxListasReproduccion_SelectionChanged"/>
+        <TextBox x:Name="TxtBuscarVideoUnicaLista" HorizontalAlignment="Left" Height="23" Margin="451,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" TextChanged="TxtBuscarVideoUnicaLista_TextChanged"/>
+        <Label Content="Buscar video" HorizontalAlignment="Left" Margin="451,279,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CboxNombresVideosEncontradoListas" HorizontalAlignment="Left" Margin="450,161,0,0" VerticalAlignment="Top" Width="96" SelectionChanged="CboxNombresVideosEncontradoListas_SelectionChanged"/>
+        <TextBox x:Name="TxtBucarVideoEnListas" HorizontalAlignment="Left" Height="23" Margin="454,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" TextChanged="TxtBucarVideoEnListas_TextChanged"/>
+        <Label Content="Seleccione lista" HorizontalAlignment="Left" Margin="455,203,0,0" VerticalAlignment="Top"/>
+        <Label Content="En listas" HorizontalAlignment="Left" Margin="462,45,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="BtnAgregarVideo" Content="AgregarVideoPorPosicion/AlFinal" HorizontalAlignment="Left" Margin="715,453,0,0" VerticalAlignment="Top" Width="183" Click="BtnAgregarVideo_Click"/>
+        <Button Content="Listas" HorizontalAlignment="Left" Margin="459,424,0,0" VerticalAlignment="Top" Width="67" Click="Button_Click_1" Height="52"/>
+        <Button x:Name="BtnAgregarVideoAlPrincipio" Content="Agregar video al principio" HorizontalAlignment="Left" Margin="561,454,0,0" VerticalAlignment="Top" Width="142" Click="BtnAgregarVideoAlPrincipio_Click" RenderTransformOrigin="0.444,0.545"/>
+        <TextBox x:Name="TxtAgregarEtiqueta" HorizontalAlignment="Left" Height="23" Margin="792,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84"/>
+        <Label Content="Etiqueta" HorizontalAlignment="Left" Margin="797,0,0,0" VerticalAlignment="Top" FontSize="16"/>
+
+        <ListBox x:Name="LstEtiquetas" HorizontalAlignment="Left" Height="77" Margin="780,65,0,0" VerticalAlignment="Top" Width="108" MouseDown="LstEtiquetas_MouseDown" SelectionMode="Multiple">
+            <ListBox.Resources>
+
+                <!--Defines a context menu-->
+                <ContextMenu x:Key="MyElementMenu">
+                    <MenuItem Header="Delete" Click="MenuItemDeleteLstEtiquetas_Click"/>
+                </ContextMenu>
+
+                <!--Sets a context menu for each ListBoxItem in the current ListBox-->
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource MyElementMenu}"/>
+                </Style>
+
+            </ListBox.Resources>
+        </ListBox>
+
+        <Label Content="Videos" HorizontalAlignment="Left" Margin="606,0,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Buscar" HorizontalAlignment="Left" Margin="464,5,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="En lista" HorizontalAlignment="Left" Margin="468,182,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Buscar video" HorizontalAlignment="Left" Margin="459,74,0,0" VerticalAlignment="Top"/>
+        <Label Content="Se encontro en lista" HorizontalAlignment="Left" Margin="442,130,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BtnAgregarEtiqueta" Content="Agregar etiqueta" HorizontalAlignment="Left" Margin="784,176,0,0" VerticalAlignment="Top" Width="99" Click="BtnAgregarEtiqueta_Click"/>
+        <Label Content="Seleccion video" HorizontalAlignment="Left" Margin="780,198,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="792,220,0,0" VerticalAlignment="Top"/>
+        <Label Content="Tamaño" HorizontalAlignment="Left" Margin="792,268,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ruta" HorizontalAlignment="Left" Margin="792,317,0,0" VerticalAlignment="Top"/>
+        <Label Content="Posicion" HorizontalAlignment="Left" Margin="783,423,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtNombre" HorizontalAlignment="Left" Height="23" Margin="791,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
+        <TextBox x:Name="txtTamaño" HorizontalAlignment="Left" Height="23" Margin="791,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
+        <TextBox x:Name="TxtRuta" HorizontalAlignment="Left" Height="23" Margin="791,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
+        <TextBox x:Name="TxtPosicion" HorizontalAlignment="Left" Height="23" Margin="844,425,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
+
+        <ListBox x:Name="LstEtiquetasVideo" HorizontalAlignment="Left" Height="20" Margin="791,397,0,0" VerticalAlignment="Top" Width="85" MouseDown="LstEtiquetasVideo_MouseDown">
+            <ListBox.Resources>
+
+                <!--Defines a context menu-->
+                <ContextMenu x:Key="MyElementMenu">
+                    <MenuItem Header="Delete" Click="MenuItemDeleteLstEtiquetasVideos_Click"/>
+                </ContextMenu>
+
+                <!--Sets a context menu for each ListBoxItem in the current ListBox-->
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource MyElementMenu}"/>
+                </Style>
+
+            </ListBox.Resources>
+        </ListBox>
+
+        <Label Content="Etiquetas" HorizontalAlignment="Left" Margin="799,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Por etiqueta" HorizontalAlignment="Left" Margin="454,328,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="LstBuscarEtiquetas" HorizontalAlignment="Left" Height="20" Margin="454,359,0,0" VerticalAlignment="Top" Width="85" SelectionChanged="LstBuscarEtiquetas_SelectionChanged"/>
+        <Label Content="a mostrar" HorizontalAlignment="Left" Margin="470,217,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="SliderVolumen" HorizontalAlignment="Left" Margin="40,433,0,0" VerticalAlignment="Top" Width="46" Minimum="0" Maximum="1" ValueChanged="ValueChanged"/>
+        <Button x:Name="BtnArriba" Content="Bajar" HorizontalAlignment="Left" Margin="713,240,0,0" VerticalAlignment="Top" Width="58" Height="34" Click="BtnArriba_Click"/>
+        <Button x:Name="BtnAbajo" Content="Subir" HorizontalAlignment="Left" Margin="713,182,0,0" VerticalAlignment="Top" Width="58" Height="34" Click="BtnAbajo_Click"/>
+        <Label Content="Seleccione etiqueta" HorizontalAlignment="Left" Margin="778,20,0,0" VerticalAlignment="Top"/>
+        <Label Content="a agregar en video nuevo" HorizontalAlignment="Left" Margin="753,39,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
