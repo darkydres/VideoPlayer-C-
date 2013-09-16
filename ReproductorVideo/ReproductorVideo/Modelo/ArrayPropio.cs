@@ -14,9 +14,14 @@ namespace ReproductorVideo
         private int tamanio;
         protected int modificaciones;
 
+        /// <summary>
+        /// Inicializa el array, o arreglo en uno es mas eficiente que
+        /// Iniciarlizarlo con 10 espacios vacios.
+        /// </summary>
+
         public ArrayPropio()
         {
-            elementos = new T[10];
+            elementos = new T[1];
         }
 
         public ArrayPropio(int inicial)
